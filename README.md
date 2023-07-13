@@ -49,14 +49,6 @@ http://127.0.0.1:5000/
 
 如果你觉得对你有用，就请我一杯咖啡。
 
-<img src="https://github.com/bravekingzhang/utools-code2flow-official/blob/main/shoukuanma.png" alt="收款码" style="width: 40%;" />
-
-## 加群交流
-
-<img src="https://github.com/bravekingzhang/flutter_chat_box/blob/main/artificial/qunliao.pic.jpg"  style="width: 50%;">
-
-添加我，注明自己 github 账号名，入群的目的，加入群聊，一起学习交流。
-
 # License: MIT
 
 本项目采用 MIT 许可证授权。
