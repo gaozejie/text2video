@@ -5,5 +5,6 @@ pyttsx3
 jieba
 langdetect
 flask
-Pillow
+Pillow==9.5.0
 openai>=1.0.0
+dotenv

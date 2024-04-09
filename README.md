@@ -19,7 +19,13 @@
 
 ## 本地开发
 
-开发时，需要安装的环境是 `macOS` `python 3.10.12`，其他环境可能存在兼容性问题
+开发时，需要安装的环境是 `macOS` `python 3.10.12`，其他环境可能存在兼容性问题，需要安装 ffmpeg
+
+```shell
+ffmpeg -version
+ffmpeg version 6.0 Copyright (c) 2000-2023 the FFmpeg developers
+built with Apple clang version 14.0.3 (clang-1403.0.22.14.1)
+```
 
 pip install -r requirements.txt
 
