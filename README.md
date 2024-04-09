@@ -17,13 +17,20 @@
 
 最终，一个有画面，有字幕，有声音的视频就出现了，咱们实现了一个 `文本转视频`。
 
-# 本地开发
-
-## 安装依赖
+## 本地开发
 
 开发时，需要安装的环境是 `macOS` `python 3.10.12`，其他环境可能存在兼容性问题
 
 pip install -r requirements.txt
+
+## 支持生成绘图提示词来提高绘图质量
+
+需要配置 openai 的 api key，支持代理
+
+```shell
+OPEN_AI_API_KEY="your open ai api key"
+OPEN_AI_BASE_URL="https://api.moonshot.cn/v1" # for moonshot demo
+```
 
 ## 生成 huggingface api key
 
@@ -32,6 +39,7 @@ token 申请地址：https://huggingface.co/settings/tokens
 因为，该项目中使用了 huggingface 上的开源文生图模型生成图片，中文生成图片效果不大好，因此，本项目对中文进行了翻译，感谢有道，直接使用有道翻译，比较方便。翻译后，生成图的质量有一定的提高。
 
 token 可以写入到 .env 文件里面
+`API_TOKEN="your huggingface api token"`
 
 ### 如果使用的 pollinations-ai ，则不填写 token 也可以，这个模型是使用的 ChatGPT 的 Dalle-2 模型。
 
@@ -46,15 +54,14 @@ python3.10 app.py
 http://127.0.0.1:5000/
 ```
 
-### 赞助
+## 赞助
+
 随意打赏，请备注 github 名
 <img width="200" alt="image" src="https://github.com/bravekingzhang/react-ai-chat/assets/4476322/7c457992-a0bc-49a3-9bd6-f23b5f1a595e">
 
 关注作者微信公众号，**老码沉思录**，与作者交流。
 <img width="200" alt="image" src="https://raw.githubusercontent.com/bravekingzhang/pic_go/master/2024/03/29/1711677809867-40f26109-8ac4-45de-b8b2-cbf78ad09cff.png">
 
-
-
-# License: MIT
+## License: MIT
 
 本项目采用 MIT 许可证授权。
