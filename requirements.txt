@@ -6,3 +6,4 @@ jieba
 langdetect
 flask
 Pillow
+openai>=1.0.0

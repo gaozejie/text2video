@@ -10,7 +10,7 @@ import subprocess
 import re
 
 from add_text_to_image import add_text_to_image
-from translate import translate_to_english
+from draw_prompt import generate_prompt
 
 
 
@@ -30,15 +30,40 @@ headers = {
     "Authorization": f"Bearer {api_token}",
     "Content-Type": "application/json"
 }
+
+# auto try
 def generateImage(model, prompt):
+    try_count = 0
+    inputs = ""
+    error = ""
+    while try_count < 3:
+        try:
+            inputs = generate_prompt(prompt)
+        except Exception as e:
+            try_count += 1
+            error = str(e)
+            continue
+    if inputs == "":
+        raise Exception("Failed to generate image prompt",error)
     body = {
-        "inputs": translate_to_english(prompt)
+        "inputs": inputs
     }
-    if model == "pollinations-ai":
-        r = requests.post("https://image.pollinations.ai/prompt/"+body['inputs'])
-    else:
-        r = requests.post("https://api-inference.huggingface.co/models/" + model,
-                      data=json.dumps(body), headers=headers)
+
+    def call_model_text_to_image(model, body):
+        if model == "pollinations-ai":
+            r = requests.post("https://image.pollinations.ai/prompt/"+body['inputs'])
+        else:
+            r = requests.post("https://api-inference.huggingface.co/models/" + model,
+                            data=json.dumps(body), headers=headers)
+        return r
+    r = call_model_text_to_image(model, body)
+    try_count = 0
+    while r.status_code != 200 and try_count < 3:
+        r = call_model_text_to_image(model, body)
+        try_count += 1
+
+    if r.status_code != 200:
+        raise Exception("Failed to generate image", r.status_code, r.text)
     # 将图片写入到 images 目录下，每个图片使用(时间戳+model).png 来命名
     timeStamp = str(int(time.time()))
     imagePath = "images/" + timeStamp + \

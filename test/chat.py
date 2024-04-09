@@ -24,20 +24,15 @@ def chatWithHuggingface(model, prompt):
         "inputs": prompt
     }
     r = requests.post("https://api-inference.huggingface.co/models/" + model,
-                      data=json.dumps(body), headers=headers, stream=True)
+                      data=json.dumps(body), headers=headers,)
 
     if r.status_code == 200:
-        for chunk in r.iter_content(decode_unicode=True):
-            # 处理响应的部分内容
-            # 在这里添加你希望对响应进行的处理
-            # 例如，将每个 chunk 解析为 JSON 数据
-
-            # data = json.loads(chunk)
-            # 处理数据...
-            print(chunk)
-
-    return  # 返回你需要的结果
+        print(r.json())
+    else:
+        print(r.status_code)
+        print(r.text)
 
 
 if __name__ == '__main__':
-    chatWithHuggingface("HuggingFaceH4/starchat-beta", "介绍一下什么时柯西不等式")
+    # chatWithHuggingface("HuggingFaceH4/starchat-beta", "介绍一下什么时柯西不等式")
+    chatWithHuggingface("ByteDance/SDXL-Lightning", "As humanity took its first steps on the lunar surface, the vast expanse of the moon's barren landscape stretched out before them, illuminated by the distant glow of Earth. The momentous occasion marked a triumph of human ingenuity and perseverance, forever changing our understanding of the cosmos and our place within it.")

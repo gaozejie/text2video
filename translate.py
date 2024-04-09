@@ -1,3 +1,4 @@
+# deprecated
 import requests
 from langdetect import detect
 
@@ -19,9 +20,6 @@ def translate_to_english(text):
         return text
 
 
-# if __name__ == "__main__":
-#     print(translate_to_english("我是中国人"))
-
 def is_chinese(text):
     try:
         lang = detect(text)
@@ -30,3 +28,6 @@ def is_chinese(text):
     except:
         return False
 
+
+if __name__ == "__main__":
+    print(translate_to_english("我是中国人"))
