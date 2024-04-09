@@ -21,10 +21,6 @@
 
 ```shell
 docker-compose up
-
-目前依赖过于复杂，可能会出现以下错误，需要手动安装依赖
-12.87 ERROR: aom >= 1.0.0 not found using pkg-config
-12.87
 ```
 
 ## 本地开发
