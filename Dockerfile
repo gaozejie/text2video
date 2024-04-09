@@ -10,7 +10,7 @@ RUN echo "deb http://deb.debian.org/debian bullseye main" >> /etc/apt/sources.li
 # 更新包列表并安装gcc-10和pkg-config
 RUN apt-get update && apt-get install -y gcc-10 pkg-config
 
-# 安装ffmpeg的依赖
+# 安装ffmpeg的依赖,这个地方可能会有问题，如果有问题请自行安装依赖
 RUN apt-get install -y build-essential yasm cmake libtool libc6 libc6-dev unzip wget libx264-dev libmp3lame-dev libopus-dev frei0r-plugins-dev libgmp-dev libgnutls28-dev libaom-dev libass-dev libfreetype6-dev libsdl2-dev libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev pkg-config texinfo zlib1g-dev
 
 # 下载并编译ffmpeg
