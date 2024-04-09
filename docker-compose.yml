@@ -9,4 +9,4 @@ services:
         OPEN_AI_API_KEY: "your_open_ai_api_key"
         OPEN_AI_BASE_URL: "https://api.moonshot.cn/v1"
     ports:
-      - "5000:5000"
+      - "8888:5000"
