@@ -8,3 +8,4 @@ flask
 Pillow==9.5.0
 openai>=1.0.0
 python-dotenv
+edge-tts

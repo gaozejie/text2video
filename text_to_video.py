@@ -36,7 +36,7 @@ def generateImage(model, prompt):
     try_count = 0
     inputs = ""
     error = ""
-    while try_count < 3:
+    while try_count < 3 and inputs == "":
         try:
             inputs = generate_prompt(prompt)
         except Exception as e:
@@ -48,6 +48,8 @@ def generateImage(model, prompt):
     body = {
         "inputs": inputs
     }
+
+    print("prompt generate image", body)
 
     def call_model_text_to_image(model, body):
         if model == "pollinations-ai":
