@@ -110,8 +110,11 @@ def clear_folder(folder_path):
 
 
 def split_sentences(text):
-    pattern = r'[,.，。]'
-    sentences = re.split(pattern, text)
+    text = re.sub('([。！？\?])([^”’])', r"\1\n\2", text)  # 单字符断句符
+    text = re.sub('(\.{6})([^”’])', r"\1\n\2", text)  # 英文省略号
+    text = re.sub('(\…{2})([^”’])', r"\1\n\2", text)  # 中文省略号
+    text = re.sub('([。！？\?][”’])([^，。！？\?])', r'\1\n\2', text)
+    sentences =  text.split("\n")
     # 移除空白的句子
     sentences = [sentence.strip()
                  for sentence in sentences if sentence.strip()]
