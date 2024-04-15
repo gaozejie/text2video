@@ -41,6 +41,7 @@ def generateImage(model, prompt):
             inputs = generate_prompt(prompt)
         except Exception as e:
             try_count += 1
+            print("Failed to generate image prompt, retrying", e)
             error = str(e)
             continue
     if inputs == "":
@@ -132,7 +133,9 @@ def convertTextToVideo(model, text):
     # 为每个句子生成图片
     for sentence in sentences:
         if sentence.strip() != "":
+            print("generateImage for sentence" , sentence)
             generateImage(model, sentence.strip())
+            print("generateImage for sentence done" , sentence)
 
     # 合成视频
     frame_width = 640
