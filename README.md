@@ -20,7 +20,7 @@
 ## Docker 一键启动
 
 ```shell
-docker-compose up
+docker-compose up --build
 ```
 
 ## 本地开发
