@@ -126,8 +126,12 @@ def convertTextToVideo(model, text):
     sentences = split_sentences(text)
 
     # 清空 images 文件夹
+    if not os.path.exists("images"):
+        os.makedirs("images")
     clear_folder("images")
     # 清空 voices 文件夹
+    if not os.path.exists("voices"):
+        os.makedirs("voices")
     clear_folder("voices")
 
     # 为每个句子生成图片
